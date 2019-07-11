@@ -1,11 +1,5 @@
-var packageJson = require('../../package.json');
-
-let emojiDatasourceVersion;
-if (typeof EMOJI_DATASOURCE_VERSION === 'undefined') {
-  emojiDatasourceVersion = packageJson.devDependencies['emoji-datasource'];
-} else {
-  emojiDatasourceVersion = EMOJI_DATASOURCE_VERSION;
-}
+const packageJson = require('../../package.json');
+const emojiDatasourceVersion = packageJson.devDependencies['emoji-datasource'];
 
 const EmojiProps = {
   backgroundImageFn: {
