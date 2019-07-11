@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      mutableData: this.data.compressed ? uncompress(this.data) : this.data,
+      mutableData: this.data && this.data.compressed ? uncompress(this.data) : this.data || {},
     }
   },
   computed: {
@@ -44,13 +44,13 @@ export default {
       return this.native
     },
     isCustom() {
-      return this.emojiData.custom
+      return this.emojiData && this.emojiData.custom
     },
     hasEmoji() {
-      return this.emojiData['has_img_' + this.set]
+      return this.emojiData && this.emojiData['has_img_' + this.set]
     },
     nativeEmoji() {
-      if (this.emojiData.unified) {
+      if (this.emojiData && this.emojiData.unified) {
         return unifiedToNative(this.emojiData.unified)
       } else {
         return ''
