@@ -80,21 +80,21 @@ function getData(_emoji, skin, set, data) {
       }
     }
 
-    if (data.aliases.hasOwnProperty(emoji)) {
+    if (data && data.aliases && data.aliases.hasOwnProperty(emoji)) {
       emoji = data.aliases[emoji]
     }
 
-    if (data.emojis.hasOwnProperty(emoji)) {
+    if (data && data.emojis && data.emojis.hasOwnProperty(emoji)) {
       emojiData = data.emojis[emoji]
     } else {
       return null
     }
   } else if (emoji.id) {
-    if (data.aliases.hasOwnProperty(emoji.id)) {
+    if (data && data.aliases && data.aliases.hasOwnProperty(emoji.id)) {
       emoji.id = data.aliases[emoji.id]
     }
 
-    if (data.emojis.hasOwnProperty(emoji.id)) {
+    if (data && data.emojis && data.emojis.hasOwnProperty(emoji.id)) {
       emojiData = data.emojis[emoji.id]
       skin || (skin = emoji.skin)
     }

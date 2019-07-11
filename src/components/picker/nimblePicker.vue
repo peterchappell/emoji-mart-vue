@@ -195,15 +195,18 @@ export default {
     },
   },
   created() {
-    let categories = this.mutableData.categories.map(c => {
-      let { id, name, emojis } = c
+    let categories = []
+    if (this.mutableData && this.mutableData.categories) {
+      categories = this.mutableData.categories.map(c => {
+        let {id, name, emojis} = c
 
-      if (this.emojisToShowFilter) {
-        emojis = c.emojis.filter(e => this.emojisToShowFilter(this.data.emojis[e] || e))
-      }
+        if (this.emojisToShowFilter) {
+          emojis = c.emojis.filter(e => this.emojisToShowFilter(this.data.emojis[e] || e))
+        }
 
-      return { id, name, emojis }
-    })
+        return {id, name, emojis}
+      })
+    }
 
     RECENT_CATEGORY.emojis = this.recentEmojis
     CUSTOM_CATEGORY.emojis = this.customEmojis
