@@ -1,8 +1,17 @@
+var packageJson = require('../../package.json');
+
+let emojiDatasourceVersion;
+if (typeof EMOJI_DATASOURCE_VERSION === 'undefined') {
+  emojiDatasourceVersion = packageJson.devDependencies['emoji-datasource'];
+} else {
+  emojiDatasourceVersion = EMOJI_DATASOURCE_VERSION;
+}
+
 const EmojiProps = {
   backgroundImageFn: {
     type: Function,
     default: function(set, sheetSize) {
-      return `https://unpkg.com/emoji-datasource-${set}@${EMOJI_DATASOURCE_VERSION}/img/${set}/sheets-256/${sheetSize}.png`
+      return `https://unpkg.com/emoji-datasource-${set}@${emojiDatasourceVersion}/img/${set}/sheets-256/${sheetSize}.png`
     }
   },
   native: {
