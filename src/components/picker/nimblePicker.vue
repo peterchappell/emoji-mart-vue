@@ -136,13 +136,13 @@ export default {
       recentEmojis = recentEmojis.filter(e => this.emojisToShowFilter(this.mutableData.emojis[e] || e))
     }
 
-    let data = this.data || {};
-    if (data.compressed) {
-      data = uncompress(this.data);
+    this.data = this.data || {};
+    if (this.data.compressed) {
+      uncompress(this.data);
     }
 
     return {
-      mutableData: data,
+      mutableData: this.data,
       mutableI18n: deepMerge(I18N, this.i18n),
       activeSkin: this.skin || store.get('skin') || this.defaultSkin,
       categories: [],
